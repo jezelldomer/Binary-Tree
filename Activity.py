@@ -49,31 +49,8 @@ class BinarySearchTreeNode:
             elements += self.right.in_order_traversal()
 
         return elements
-
-
-def build_tree(elements):
-    print("ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ\n")
-    print("Building tree with these elements,", "letters of my Full Name:",elements,"\n")
-    root = BinarySearchTreeNode(elements[0])
-
-    for i in range(1,len(elements)):
-        root.add_child(elements[i])
-
-    return root
-
-
-if __name__ == '__main__':
-    letters = ["J","E","Z", "E","L","L","D","O","M","E","R"] #elements
-    
-    #for printing the search elements
-    letter_tree = build_tree(letters)
-    print("E is in the list? ", letter_tree.search("E"))
-    print("P is in the list? ", letter_tree.search("P"))
-    #for printing the order traversal
-    print("\nIn order traversal gives this sorted list:",letter_tree.in_order_traversal())
-    print("\nི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ")
-    
-#••••••••This is for the exercise part••••••••
+        
+    #••••••••This is for the exercise part••••••••
     
     #function for post order traversal
     def post_order_traversal(self):
@@ -96,3 +73,47 @@ if __name__ == '__main__':
             elements += self.right.pre_order_traversal()
 
         return elements
+      
+    #function for finding the max data      
+    def find_max(self):
+        if self.right is None:
+            return self.data
+        return self.right.find_max()
+
+    #function for finding the min data
+    def find_min(self):
+        if self.left is None:
+            return self.data
+        return self.left.find_min()
+
+    
+def build_tree(elements):
+    print("ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ\n")
+    print("Building tree with the elements below", "\nLetters of my Full Name:",elements,"\n")
+    root = BinarySearchTreeNode(elements[0])
+
+    for i in range(1,len(elements)):
+        root.add_child(elements[i])
+
+    return root
+
+
+if __name__ == '__main__':
+    letters = ["J","E","Z", "E","L","L","D","O","M","E","R"] #elements
+    numbers = ["12", "13", "18", "22", "23", "31"]
+    
+    #for printing the search elements
+    letter_tree = build_tree(letters)
+    print("E is in the list? ", letter_tree.search("E"))
+    print("P is in the list? ", letter_tree.search("P"))
+        
+    print("\nMin:",letter_tree.find_min())
+    print("Max:",letter_tree.find_max())
+    
+    #for printing the order traversal
+    print("\nIn-order traversal:", letter_tree.in_order_traversal())
+    print("Pre-order traversal:", letter_tree.pre_order_traversal())
+    print("Post-order traversal:", letter_tree.post_order_traversal())
+       
+    print("\nི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ")
+    
