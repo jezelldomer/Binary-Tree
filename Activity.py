@@ -52,6 +52,7 @@ class BinarySearchTreeNode:
 
 
 def build_tree(elements):
+    print("ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ\n")
     print("Building tree with these elements,", "letters of my Full Name:",elements,"\n")
     root = BinarySearchTreeNode(elements[0])
 
@@ -70,3 +71,28 @@ if __name__ == '__main__':
     print("P is in the list? ", letter_tree.search("P"))
     #for printing the order traversal
     print("\nIn order traversal gives this sorted list:",letter_tree.in_order_traversal())
+    print("\nི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ")
+    
+#••••••••This is for the exercise part••••••••
+    
+    #function for post order traversal
+    def post_order_traversal(self):
+        elements = []
+        if self.left:
+            elements += self.left.post_order_traversal()
+        if self.right:
+            elements += self.right.post_order_traversal()
+
+        elements.append(self.data)
+
+        return elements
+
+    #function for pre order traversal
+    def pre_order_traversal(self):
+        elements = [self.data]
+        if self.left:
+            elements += self.left.pre_order_traversal()
+        if self.right:
+            elements += self.right.pre_order_traversal()
+
+        return elements
