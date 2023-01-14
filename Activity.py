@@ -85,11 +85,26 @@ class BinarySearchTreeNode:
         if self.left is None:
             return self.data
         return self.left.find_min()
+        
+    #function for deleting elements      
+    def delete(self, val):
+        if val < self.data:
+            if self.left:
+                self.left = self.left.delete(val)
+        elif val > self.data:
+            if self.right:
+                self.right = self.right.delete(val)
+        else:
+            if self.left is None and self.right is None:
+                return None
+            elif self.left is None:
+                return self.right
+            elif self.right is None:
+                return self.left        
 
     
 def build_tree(elements):
     print("ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ\n")
-    print("Building tree with the elements below", "\nLetters of my Full Name:",elements,"\n")
     root = BinarySearchTreeNode(elements[0])
 
     for i in range(1,len(elements)):
@@ -100,10 +115,11 @@ def build_tree(elements):
 
 if __name__ == '__main__':
     letters = ["J","E","Z", "E","L","L","D","O","M","E","R"] #elements
-    numbers = ["12", "13", "18", "22", "23", "31"]
     
     #for printing the search elements
     letter_tree = build_tree(letters)
+    print("Building tree with the elements below", "\nLetters of my Full Name:")
+    print (letters,"\n")
     print("E is in the list? ", letter_tree.search("E"))
     print("P is in the list? ", letter_tree.search("P"))
         
@@ -113,7 +129,16 @@ if __name__ == '__main__':
     #for printing the order traversal
     print("\nIn-order traversal:", letter_tree.in_order_traversal())
     print("Pre-order traversal:", letter_tree.pre_order_traversal())
-    print("Post-order traversal:", letter_tree.post_order_traversal())
-       
+    print("Post-order traversal:", letter_tree.post_order_traversal(),"\n")
+    
+    #for deleting an element
+    numbers = [18, 17, 4, 1, 9, 20, 25, 88] 
+    numbers_tree = build_tree(numbers)
+    numbers_tree.delete(20)
+    print("New Set of Elements:")
+    print(numbers)
+    print("\nAfter deleting 20 ",numbers_tree.in_order_traversal()) 
+    
+               
     print("\nི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ⏝ ི⋮ ྀ")
     
